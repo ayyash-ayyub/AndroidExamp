@@ -4,6 +4,7 @@ package seamolec.org.app.udjseamolec;
  * Created by Krisnasw on 9/10/2016.
  */
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(DataAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final DataAdapter.ViewHolder viewHolder, final int i) {
 
         viewHolder.tv_name.setText(tugas.get(i).getNama_quiz());
         viewHolder.tv_version.setText(tugas.get(i).getTanggal_mulai());
@@ -36,7 +37,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"test :"+tugas.get(i).getId_quiz(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(),tugas.get(i).getId_quiz(),Toast.LENGTH_SHORT).show();
             }
         });
     }

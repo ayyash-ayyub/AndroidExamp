@@ -37,7 +37,7 @@ public class MapelController extends AppCompatActivity implements NavigationView
     private DataAdapter adapter;
 
     Toolbar toolbar;
-    String tamvan;
+    public String tamvan;
 
     @Override
     public void setContentView(View view) {
@@ -60,9 +60,6 @@ public class MapelController extends AppCompatActivity implements NavigationView
         View header = navigationView.getHeaderView(0);
         TextView txt_jeneng = (TextView)header.findViewById(R.id.jeneng);
 
-        SharedPreferences sps = getSharedPreferences("", MODE_PRIVATE);
-        String ntapz = sps.getString("IPnya", "");
-        tamvan = ntapz;
     }
     private void initViews(){
         recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
@@ -72,11 +69,16 @@ public class MapelController extends AppCompatActivity implements NavigationView
         loadJSON();
     }
     private void loadJSON(){
+        SharedPreferences sps = getSharedPreferences("", MODE_PRIVATE);
+        String ntapz = sps.getString("IPnya", "");
+        tamvan = ntapz;
+        System.out.println("dasdad"+tamvan);
         //IP Dinamis -Muhammad Muslim Rifai-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://"+tamvan+"/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        System.out.println("ip ne : "+tamvan);
         TugasAPI request = retrofit.create(TugasAPI.class);
         Call<JSONResponse> call = request.getJSON();
         call.enqueue(new Callback<JSONResponse>() {
