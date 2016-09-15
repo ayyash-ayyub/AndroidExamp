@@ -38,6 +38,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),tugas.get(i).getId_quiz(),Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(v.getContext(),QuizActivity.class);
+                v.getContext().startActivity(i);
             }
         });
     }
@@ -52,16 +54,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
 
-            tv_name = (TextView)view.findViewById(R.id.tv_name);
-            tv_version = (TextView)view.findViewById(R.id.tv_version);
-            tv_api_level = (TextView)view.findViewById(R.id.tv_api_level);
-
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            tv_name = (TextView) view.findViewById(R.id.tv_name);
+            tv_version = (TextView) view.findViewById(R.id.tv_version);
+            tv_api_level = (TextView) view.findViewById(R.id.tv_api_level);
+ 
         }
 
     }
